@@ -196,7 +196,7 @@
   font-family: 'Source Sans 3', sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #cecece;
 }
 
 .comment-item__date {
@@ -209,7 +209,7 @@
   font-family: 'Source Sans 3', sans-serif;
   font-size: 0.9rem;
   line-height: 1.65;
-  color: #333;
+  color: #e4e4e4;
   white-space: pre-wrap;
   word-break: break-word;
 }
