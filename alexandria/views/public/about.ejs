@@ -12,19 +12,26 @@
             <h2>Editorial Team</h2>
             <p>Alexandria is edited by a distributed team of section editors and copy editors. This section is where we feature the people shaping every issue.</p>
             <div class="editorial-grid">
-                <% if (editors && editors.length) { %>
-                    <% editors.forEach((editor) => { %>
-                        <article class="editor-card">
-                            <h3><a href="/author/<%= editor.slug %>"><%= editor.name %></a></h3>
-                            <p><%= editor.bio || 'Editorial team member at Alexandria.' %></p>
-                        </article>
-                    <% }) %>
-                <% } else { %>
-                    <article class="editor-card">
-                        <h3>Editorial Team Listing</h3>
-                        <p>Editor profiles will appear here as they are added in the CMS.</p>
-                    </article>
-                <% } %>
+                <article class="editor-card">
+                    <h3>Editor-in-Chief</h3>
+                    <p>Leads the editorial line and approves final publication decisions.</p>
+                </article>
+                <article class="editor-card">
+                    <h3>History &amp; Politics Editors</h3>
+                    <p>Develop long-form essays, source checks, and fact-grounded analysis.</p>
+                </article>
+                <article class="editor-card">
+                    <h3>Law &amp; Economics Editors</h3>
+                    <p>Oversee argument clarity, citations, and methodological consistency.</p>
+                </article>
+                <article class="editor-card">
+                    <h3>Philosophy Editor</h3>
+                    <p>Curates conceptual pieces and ensures logical rigor in debate writing.</p>
+                </article>
+                <article class="editor-card">
+                    <h3>Copy &amp; Production Editors</h3>
+                    <p>Polish style, manage schedules, and prepare stories for release.</p>
+                </article>
             </div>
             <p>If you’d like your editor profile listed here, please contact us with your preferred name, role, and short bio.</p>
         </div>
