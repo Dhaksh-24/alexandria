@@ -9,6 +9,8 @@
             --accent: #c9922a;
             --accent-dark: #a87821;
             --accent-bg: #fdf6e8;
+            --accent-cool: #0b63e6;
+            --accent-cool-dark: #0849a8;
             --accent-cool: #2f7f8f;
             --accent-cool-dark: #245f6b;
             --red-retract: #c0392b;
@@ -42,6 +44,8 @@
             --accent: #d4af37;
             --accent-dark: #e8c84a;
             --accent-bg: rgba(212,175,55,0.08);
+            --accent-cool: #7fb2ff;
+            --accent-cool-dark: #a8ccff;
             --accent-cool: #68b8c8;
             --accent-cool-dark: #89d1de;
             --img-from: #2a2317;
@@ -1574,6 +1578,10 @@
 
 .static-page .prose a {
     color: var(--accent-cool);
+    font-weight: 600;
+    text-decoration-thickness: 2px;
+    text-decoration-color: color-mix(in srgb, var(--accent-cool) 70%, transparent);
+    text-underline-offset: 0.18em;
     text-decoration-color: color-mix(in srgb, var(--accent-cool) 45%, transparent);
     text-underline-offset: 0.15em;
 }
@@ -1595,6 +1603,9 @@
 
 .editor-card {
     border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-cool);
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--accent-cool) 6%, var(--white));
     border-left: 3px solid var(--accent-cool);
     border-radius: 6px;
     background: var(--white);
