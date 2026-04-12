@@ -150,6 +150,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            overflow: visible;
         }
 
         .header-inner {
@@ -2902,13 +2903,14 @@ footer::before {
    READING PROGRESS BAR
 ═══════════════════════════════════════ */
 #readingProgressBar {
-    position: fixed;
-    top: 0;
+    position: absolute;
+    bottom: -2px;
     left: 0;
     height: 3px;
     width: 0%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-dark));
-    z-index: 9999;
-    transition: width 0.1s linear;
+    background: linear-gradient(90deg, #e8c84a, var(--accent), var(--accent-dark));
+    z-index: 1001;
+    transition: width 0.12s linear;
     pointer-events: none;
+    border-radius: 0 2px 2px 0;
 }
