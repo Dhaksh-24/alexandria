@@ -1,0 +1,35 @@
+
+<div class="sub-popup-overlay" id="subPopupOverlay" aria-hidden="true">
+  <div class="sub-popup" role="dialog" aria-modal="true" aria-labelledby="subPopupTitle">
+
+    <button class="sub-popup__close" id="subPopupClose" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="sub-popup__logo" aria-hidden="true">Alexandria</div>
+
+    <h2 class="sub-popup__title" id="subPopupTitle">Stay Informed</h2>
+    <p class="sub-popup__lead">
+      Join our readers and receive new essays, analysis, and commentary delivered directly to your inbox.
+    </p>
+
+    <form class="sub-popup__form" id="subPopupForm">
+      <input
+        type="email"
+        class="sub-popup__input"
+        id="subPopupEmail"
+        placeholder="Your email address"
+        required
+        autocomplete="email"
+      >
+      <button type="submit" class="sub-popup__btn">Subscribe</button>
+    </form>
+
+    <div class="sub-popup__success" id="subPopupSuccess" hidden>
+      <span>✦</span> Thank you — you're subscribed.
+    </div>
+
+    <button class="sub-popup__dismiss" id="subPopupDismiss">No thanks</button>
+
+  </div>
+</div>

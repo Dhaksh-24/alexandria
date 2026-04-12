@@ -77,10 +77,21 @@ function formatDate(d) {
                 </button>
                 <div class="subjects-slideshow" id="subjectsSlideshow">
                     <div class="subjects-track" id="subjectsTrack">
+                        <% 
+                        const subjectIcons = {
+                            'history':   '<path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/>',
+                            'politics':  '<path d="M3 22V12"/><path d="M21 22V12"/><path d="M12 2L2 12h20L12 2z"/><path d="M9 22V16h6v6"/>',
+                            'law':       '<path d="M12 3v18"/><path d="M3 9l9-6 9 6"/><path d="M5 14h4m6 0h4"/><path d="M5 14a4 4 0 0 0 4 4m6-4a4 4 0 0 1-4 4m0 0v1"/><path d="M3 22h18"/>',
+                            'economics': '<path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-4"/>',
+                            'philosophy':'<path d="M12 2a7 7 0 0 1 7 7c0 3.5-2.5 6-5 8H10c-2.5-2-5-4.5-5-8a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 21v-4"/>'
+                        };
+                        %>
                         <% for (const s of subjects) { %>
                         <a class="subject-slide" href="/subject/<%= s.slug %>">
                             <div class="subject-slide-icon">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <%- subjectIcons[s.slug] || subjectIcons['history'] %>
+                                </svg>
                             </div>
                             <h3 class="subject-name"><%= s.name %></h3>
                             <% if (s.description) { %>

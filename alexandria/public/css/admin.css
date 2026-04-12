@@ -66,7 +66,7 @@ body {
 .admin-user-name { font-size: 0.85rem; font-weight: 600; color: #ddd; }
 .admin-user-role { font-size: 0.75rem; color: #888; text-transform: capitalize; margin-bottom: 0.5rem; }
 .admin-link { font-size: 0.82rem; color: #aaa; text-decoration: none; }
-.admin-link:hover { color: #d4af37; }
+.admin-link:hover { color: #3d8f68; }
 
 .admin-main {
     flex: 1;
@@ -139,7 +139,7 @@ td a:hover { text-decoration: underline; }
     text-transform: uppercase;
     letter-spacing: 0.03em;
 }
-.status-published { background: #d4edda; color: #155724; }
+.status-published { background: #d4edda; color: #2d6a4f; }
 .status-draft { background: #fff3cd; color: #856404; }
 .status-retracted { background: #f8d7da; color: #721c24; }
 
@@ -167,7 +167,8 @@ td a:hover { text-decoration: underline; }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #c9922a;
+    border-color: #2d6a4f;
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
 }
 
 .form-group textarea { min-height: 200px; resize: vertical; font-family: monospace; font-size: 0.88rem; line-height: 1.7; }
@@ -237,4 +238,18 @@ td a:hover { text-decoration: underline; }
     .admin-main { margin-left: 0; padding: 1.5rem; }
     .form-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
+}
+.admin-alert--success,
+.alert-success {
+    background: #edf7f1;
+    color: #2d6a4f;
+    border: 1px solid rgba(45, 106, 79, 0.25);
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+.sub-badge--accepted {
+    background: #edf7f1;
+    color: #2d6a4f;
 }

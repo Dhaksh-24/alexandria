@@ -9,8 +9,11 @@
             --accent: #c9922a;
             --accent-dark: #a87821;
             --accent-bg: #fdf6e8;
-            --accent-cool: #0b63e6;
-            --accent-cool-dark: #0849a8;
+            --green: #2d6a4f;
+            --green-dark: #1e4d38;
+            --green-light: rgba(45, 106, 79, 0.1);
+            --green-bg: #edf7f1;
+
             --accent-cool: #2f7f8f;
             --accent-cool-dark: #245f6b;
             --red-retract: #c0392b;
@@ -43,16 +46,18 @@
             --border-light: #1e1b17;
             --accent: #d4af37;
             --accent-dark: #e8c84a;
-            --accent-bg: rgba(212,175,55,0.08);
-            --accent-cool: #7fb2ff;
-            --accent-cool-dark: #a8ccff;
+            --accent-bg: #d4af3714;
+            --green: #3d8f68;
+            --green-dark: #2d6a4f;
+            --green-light: rgba(61, 143, 104, 0.12);
+            --green-bg: rgba(45, 106, 79, 0.1);
             --accent-cool: #68b8c8;
             --accent-cool-dark: #89d1de;
             --img-from: #2a2317;
             --img-mid: #1e1a10;
             --img-to: #342a18;
             --img-label: rgba(212,175,55,0.2);
-            --overlay-bg: rgba(0,0,0,0.75);
+            --overlay-bg: #000000bf;
             --search-shadow: rgba(0,0,0,0.5);
             --sub-bg: #050505;
             --sub-text: var(--accent);
@@ -807,8 +812,8 @@
             color: var(--ink-light);
         }
 
-        .footer-links {
-            list-style: none;
+        .footer-links a:hover {
+            color: var(--green) 
         }
 
         .footer-links li {
@@ -1547,8 +1552,9 @@
 
 .search-results-count {
     font-size: 0.9rem;
-    color: var(--ink-faint);
+    color: var(--green);
     margin-bottom: 1.5rem;
+    font-weight: 500;
 }
 
 /* ═══════════════════════════════════════
@@ -1616,7 +1622,7 @@
     border-left: 4px solid var(--accent-cool);
     border-radius: 6px;
     background: color-mix(in srgb, var(--accent-cool) 6%, var(--white));
-    border-left: 3px solid var(--accent-cool);
+    border-left: 3px solid var(--green);
     border-radius: 6px;
     background: var(--white);
     padding: 0.85rem 1rem;
@@ -1911,7 +1917,7 @@
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--green);
     margin-top: auto;
     padding-top: 0.5rem;
     border-top: 1px solid var(--border);
@@ -2476,4 +2482,339 @@
 }
 [data-theme="dark"] .subscribe-glow {
     background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+}
+/* ═══════════════════════════════════════
+   SUBSCRIPTION POPUP — append to style.css
+═══════════════════════════════════════ */
+
+.sub-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.75);
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+.sub-popup-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+.sub-popup {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 3rem 2.5rem 2.5rem;
+    max-width: 460px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+}
+.sub-popup-overlay.active .sub-popup {
+    transform: translateY(0) scale(1);
+}
+.sub-popup__logo {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+}
+.sub-popup__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--ink-faint);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+.sub-popup__close:hover { color: var(--ink); background: var(--border-light); }
+.sub-popup__title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+}
+.sub-popup__lead {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.sub-popup__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+.sub-popup__input {
+    width: 100%;
+    padding: 0.8rem 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    background: var(--cream);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    text-align: center;
+}
+.sub-popup__input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px var(--green-light);
+}
+.sub-popup__input::placeholder { color: var(--ink-faint); }
+.sub-popup__btn {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.sub-popup__btn:hover { background: var(--green-dark); }
+.sub-popup__success {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    color: var(--green);
+    font-weight: 500;
+    padding: 0.75rem 0;
+    margin-bottom: 0.5rem;
+}
+.sub-popup__dismiss {
+    background: none;
+    border: none;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: color 0.2s ease;
+    display: block;
+    margin: 0.25rem auto 0;
+}
+.sub-popup__dismiss:hover { color: var(--ink); }
+[data-theme="dark"] .sub-popup { box-shadow: 0 24px 64px rgba(0,0,0,0.6); }
+[data-theme="dark"] .sub-popup__input { background: var(--white); }
+@media (max-width: 480px) {
+    .sub-popup { padding: 2.5rem 1.5rem 2rem; }
+    .sub-popup__title { font-size: 1.35rem; }
+    .sub-popup__logo { font-size: 1.5rem; }
+}
+.header-actions a[href="/submit"].btn-signin {
+    color: var(--green);
+}
+.header-actions a[href="/submit"].btn-signin:hover {
+    color: var(--green-dark);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SUBTLE GREEN ACCENTS
+   Paste at the very bottom of style.css
+   Gold stays dominant — green appears at secondary/detail level
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── HEADER ──────────────────────────────────────────────────── */
+/* Nav underline hover becomes green (gold is for active state) */
+.nav-links a::after {
+    background: var(--green);
+}
+
+/* Submit an Article link in header */
+.header-actions a[href="/submit"] {
+    color: var(--green);
+}
+.header-actions a[href="/submit"]:hover {
+    color: var(--green-dark);
+}
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+/* Decorative lines flanking the tagline */
+.hero-line--left,
+.hero-line--right {
+    background: linear-gradient(90deg, transparent, var(--green), transparent);
+    opacity: 0.5;
+}
+
+/* Hero description text — slightly green-tinted */
+.hero-description {
+    color: var(--ink-light);
+}
+
+/* Hero ghost button border */
+.hero-btn--ghost {
+    border-color: var(--green);
+    color: var(--green);
+}
+.hero-btn--ghost:hover {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+}
+
+/* ── FEATURED SECTION ────────────────────────────────────────── */
+/* The label bar left of "Featured" */
+.label-bar {
+    background: var(--green);
+}
+
+/* Author name in featured meta */
+.featured-meta .author a {
+    color: var(--green);
+}
+.featured-meta .author a:hover {
+    color: var(--green-dark);
+}
+
+/* ── ARTICLE FEED ────────────────────────────────────────────── */
+/* Subject label above article title (e.g. "History · Politics") */
+.article-item-subject {
+    color: var(--green);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+}
+
+/* Author name in article meta */
+.article-item-meta .author {
+    color: var(--green);
+}
+
+/* Top bar on article hover — use green instead of gold */
+.article-item-top-bar {
+    background: linear-gradient(90deg, var(--green), var(--green-dark));
+}
+
+/* ── SECTION DIVIDERS ────────────────────────────────────────── */
+/* The small bar beside "Latest", "Featured" section labels */
+.section-label--bar::before {
+    background: var(--green);
+}
+
+/* ── ARTICLE PAGE ────────────────────────────────────────────── */
+/* Subject label at top of article */
+.article-page-subject a {
+    color: var(--green);
+}
+.article-page-subject a:hover {
+    color: var(--green-dark);
+}
+
+/* Blockquote border — green gives it a different tone to gold links */
+.article-body blockquote {
+    border-left-color: var(--green);
+}
+
+/* Author name in article meta */
+.article-page-meta a {
+    color: var(--green);
+}
+.article-page-meta a:hover {
+    color: var(--green-dark);
+}
+
+/* Tags hover */
+.tag-pill:hover {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+/* Related section heading bar */
+.related-section h3 {
+    border-left: 3px solid var(--green);
+    padding-left: 0.75rem;
+}
+
+/* ── AUTHOR PAGE ──────────────────────────────────────────────── */
+.author-page-links a {
+    color: var(--green);
+}
+.author-page-links a:hover {
+    color: var(--green-dark);
+}
+
+/* ── FOOTER ──────────────────────────────────────────────────── */
+/* Footer link hover — subtle green */
+.footer-links a:hover {
+    color: var(--green);
+}
+
+/* Footer bottom border accent */
+footer {
+    border-top: 1px solid var(--border);
+    position: relative;
+}
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--green) 50%, var(--accent) 100%);
+    opacity: 0.6;
+}
+
+/* ── SEARCH PAGE ─────────────────────────────────────────────── */
+.search-results-count {
+    color: var(--green);
+}
+
+/* ── SUBJECT PAGE ────────────────────────────────────────────── */
+.subject-page-header h1 {
+    border-left: 4px solid var(--green);
+    padding-left: 1rem;
+}
+
+/* Filter bar active select focus */
+.filter-bar select:focus {
+    border-color: var(--green);
+    outline: none;
+}
+
+/* ── DARK MODE ADJUSTMENTS ───────────────────────────────────── */
+[data-theme="dark"] .article-item-subject {
+    color: var(--green);
+}
+[data-theme="dark"] .article-page-subject a {
+    color: var(--green);
+}
+[data-theme="dark"] .featured-meta .author a {
+    color: var(--green);
+}
+[data-theme="dark"] footer::before {
+    opacity: 0.4;
 }
