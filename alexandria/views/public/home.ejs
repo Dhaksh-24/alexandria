@@ -29,8 +29,7 @@ function formatDate(d) {
             </div>
         </div>
     </section>
-
-    <!-- ═══════════════ FEATURED ═══════════════ -->
+<!-- ═══════════════ FEATURED ═══════════════ -->
     <% if (featured) { %>
     <section class="featured-section">
         <div class="container">
@@ -64,7 +63,6 @@ function formatDate(d) {
         </div>
     </section>
     <% } %>
-
     <!-- ═══════════════ SUBJECTS CAROUSEL ═══════════════ -->
     <section class="subjects-section subjects-section--enhanced">
         <div class="subjects-bg-glow subjects-bg-glow--left"></div>
@@ -118,7 +116,8 @@ function formatDate(d) {
             </div>
             <div class="article-feed">
                 <% for (let i = 0; i < latest.length; i++) {
-                    const a = latest[i]; %>
+                    const a = latest[i];
+                    const isPoliticsShort = a.content_type === 'short_form' && (a.subject_slugs || '').split(',').includes('politics'); %>
                     <a href="/article/<%= a.slug %>" class="article-item article-item--hover reveal" style="transition-delay:<%= (i * 0.07).toFixed(2) %>s">
                         <div class="article-item-text">
                             <div class="article-item-subject"><%= a.subject_names %></div>
@@ -137,10 +136,19 @@ function formatDate(d) {
                             <% } else { %>
                                 <div class="article-item-thumb"></div>
                             <% } %>
+                            <% if (isPoliticsShort) { %>
+                                <div class="article-hover-note">
+                                    <span>Brought to you by</span>
+                                    <img src="/images/embassy-logo.svg" alt="The Embassy logo" class="article-hover-note-logo">
+                                </div>
+                            <% } %>
                             <div class="article-item-thumb-overlay"></div>
                         </div>
                         <div class="article-item-top-bar"></div>
                     </a>
+                <% } %>
+                <% if (!latest.length) { %>
+                    <p class="latest-empty">No articles yet.</p>
                 <% } %>
             </div>
         </div>

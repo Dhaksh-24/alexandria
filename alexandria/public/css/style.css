@@ -9,13 +9,13 @@
             --accent: #c9922a;
             --accent-dark: #a87821;
             --accent-bg: #fdf6e8;
-            --green: #2d6a4f;
-            --green-dark: #1e4d38;
-            --green-light: rgba(45, 106, 79, 0.1);
-            --green-bg: #edf7f1;
+            --green: #c9922a;
+            --green-dark: #a87821;
+            --green-light: #fdf6e8;
+            --green-bg: #fdf6e8;
 
-            --accent-cool: #2f7f8f;
-            --accent-cool-dark: #245f6b;
+            --accent-cool: #c9922a;
+            --accent-cool-dark: #a87821;
             --red-retract: #c0392b;
             --img-from: #f0e8d8;
             --img-mid: #e4d8c0;
@@ -47,10 +47,10 @@
             --accent: #d4af37;
             --accent-dark: #e8c84a;
             --accent-bg: #d4af3714;
-            --green: #3d8f68;
-            --green-dark: #2d6a4f;
-            --green-light: rgba(61, 143, 104, 0.12);
-            --green-bg: rgba(45, 106, 79, 0.1);
+            --green: #d4af37;
+            --green-dark: #e8c84a;
+            --green-light: rgba(212,175,55,0.08);
+            --green-bg: rgba(212,175,55,0.08);
             --accent-cool: #68b8c8;
             --accent-cool-dark: #89d1de;
             --img-from: #2a2317;
@@ -622,6 +622,26 @@
             color: var(--accent);
         }
 
+        .latest-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .latest-column-title {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 1.2rem;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .latest-empty {
+            border-top: 1px solid var(--border);
+            color: var(--ink-light);
+            font-size: 0.95rem;
+            padding: 1.5rem 0;
+        }
+
         .view-all {
             font-size: 0.875rem;
             font-weight: 600;
@@ -985,6 +1005,11 @@
             /* Articles */
             .latest-section {
                 padding: 2.5rem 0 3rem;
+            }
+
+            .latest-columns {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .article-item {
@@ -1499,6 +1524,26 @@
     cursor: pointer;
 }
 
+.subject-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.subject-column-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+}
+
+.subject-empty {
+    border-top: 1px solid var(--border);
+    color: var(--ink-light);
+    font-size: 0.95rem;
+    padding: 1.5rem 0;
+}
+
 /* ═══════════════════════════════════════
    SEARCH PAGE
 ═══════════════════════════════════════ */
@@ -1815,6 +1860,7 @@
     .article-body { font-size: 1.05rem; }
     .article-page { padding: 2rem 1.5rem 3rem; }
     .subject-page-header h1 { font-size: 1.85rem; }
+    .subject-columns { grid-template-columns: 1fr; gap: 1.5rem; }
     .author-page-header { flex-direction: column; align-items: center; text-align: center; }
     .static-page { padding: 2rem 1.5rem; }
 }
@@ -2432,6 +2478,36 @@
     transition: transform 0.4s ease;
     border-radius: 4px;
 }
+.article-hover-note {
+    position: absolute;
+    inset: auto 0 0 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.08));
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.7rem 0.6rem;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    align-items: flex-start;
+}
+.article-hover-note-logo {
+    width: min(170px, 100%);
+    height: auto;
+    display: block;
+    border-radius: 3px;
+    object-fit: contain;
+    object-position: left center;
+}
+.article-item--hover:hover .article-hover-note {
+    opacity: 1;
+    transform: translateY(0);
+}
 .article-item--hover:hover .article-item-thumb { transform: scale(1.04); }
 
 .article-item-thumb-overlay {
@@ -2441,6 +2517,9 @@
     transition: opacity 0.3s ease;
     pointer-events: none;
     border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .article-item--hover:hover .article-item-thumb-overlay { opacity: 1; }
 
