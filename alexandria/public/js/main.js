@@ -38,3 +38,18 @@ function revealOnScroll() {
 }
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
+
+// Reading progress bar
+(function () {
+    const bar = document.getElementById('readingProgressBar');
+    if (!bar) return;
+    function update() {
+        const doc = document.documentElement;
+        const scrolled = doc.scrollTop || document.body.scrollTop;
+        const total = doc.scrollHeight - doc.clientHeight;
+        const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+        bar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+})();

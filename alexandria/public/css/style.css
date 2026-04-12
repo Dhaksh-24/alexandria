@@ -2897,3 +2897,18 @@ footer::before {
 [data-theme="dark"] footer::before {
     opacity: 0.4;
 }
+
+/* ═══════════════════════════════════════
+   READING PROGRESS BAR
+═══════════════════════════════════════ */
+#readingProgressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+    z-index: 9999;
+    transition: width 0.1s linear;
+    pointer-events: none;
+}
